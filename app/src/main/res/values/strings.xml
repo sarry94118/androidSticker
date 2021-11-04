@@ -2,12 +2,13 @@
     <string name="app_name">sticker</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
-    <string name="prompt_email">UserName</string>
-    <string name="prompt_password">Password</string>
-    <string name="action_sign_in">Sign in</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
-    <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
-    <string name="login_failed">"Login failed"</string>
+    <string name="username_string">Username</string>
+    <string name="action_sign_in">Sign In</string>
+    <string name="sending_history_string">Sent History</string>
+    <string name="receiving_history_string">Received History</string>
+    <string name="receiver_s_username_string">Receiver\'s Username</string>
+    <string name="send_string">Send</string>
+    <string name="reset_string">Reset</string>
+    <string name="stickers_string">Stickers Options</string>
+    <string name="click_emoji">Click one emoji to pick. Click Resetto cancel.</string>
 </resources>
