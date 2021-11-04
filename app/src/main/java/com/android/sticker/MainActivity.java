@@ -121,21 +121,21 @@ public class MainActivity extends AppCompatActivity {
                         database.child("users").child((kv.getKey())).child("token").setValue("offline");
                     }
                 }
+
+                loginInfo.setText("Current user: " + curUsername);
+                logoutMsg.setText("");
+
+                //start after log in activity
+                Intent intent = new Intent(MainActivity.this, AfterLogInActivity.class);
+                intent.putExtra("username", username);
+                intent.putExtra("deviceToken", deviceToken);
+                startActivity(intent);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-        loginInfo.setText("Current user: " + curUsername);
-        logoutMsg.setText("");
-
-        //start after log in activity
-//        Intent intent = new Intent(MainActivity.this, AfterLogInActivity.class);
-//        intent.putExtra("username", username);
-//        intent.putExtra("deviceToken", deviceToken);
-//        startActivity(intent);
 
     }
 
