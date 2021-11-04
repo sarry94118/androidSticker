@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">sticker</string>
     <string name="title_activity_login">LoginActivity</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="prompt_email">UserName</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
