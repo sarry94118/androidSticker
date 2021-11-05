@@ -48,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         userNameEditText = (TextView) findViewById(R.id.username);
-//        logoutButton = findViewById(R.id.login);
         loginInfo = findViewById(R.id.loginInfo);
-//        logoutMsg = findViewById(R.id.logoutMsg);
         database = accessDatabase();
         getToken();
     }

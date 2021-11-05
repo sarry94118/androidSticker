@@ -130,45 +130,137 @@
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"
                 android:padding="8dp" />
+            <TableLayout
+                android:id="@+id/tableLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:stretchColumns="*">
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/emoji1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:textAlignment="center"
-                android:src="@drawable/emoji1" />
+                    <ImageView
+                        android:id="@+id/emoji1"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji1" />
 
-            <CheckBox
-                android:id="@+id/emoji1checkBox"
-                android:onClick="selectSticker"
-                android:layout_width="33dp"
-                android:layout_height="35dp" />
+                    <CheckBox
+                        android:id="@+id/emoji1checkBox"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:onClick="selectSticker"
+                        android:layout_gravity="center|center_horizontal" />
+                    <ImageView
+                        android:id="@+id/emoji2"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji2" />
 
-            <ImageView
-                android:id="@+id/emoji2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:textAlignment="center"
-                android:src="@drawable/emoji2" />
+                    <CheckBox
+                        android:id="@+id/emoji2checkBox"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:onClick="selectSticker"
+                        android:layout_gravity="center|center_horizontal" />
+                </TableRow>
 
-            <CheckBox
-                android:id="@+id/emoji2checkBox"
-                android:onClick="selectSticker"
-                android:layout_width="33dp"
-                android:layout_height="35dp" />
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/emoji3"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:textAlignment="center"
-                android:src="@drawable/emoji3" />
+                    <ImageView
+                        android:id="@+id/emoji3"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji3" />
 
-            <CheckBox
-                android:id="@+id/emoji3checkBox"
-                android:onClick="selectSticker"
-                android:layout_width="33dp"
-                android:layout_height="35dp" />
+                    <CheckBox
+                        android:id="@+id/emoji3checkBox"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:onClick="selectSticker"
+                        android:layout_gravity="center|center_horizontal" />
+                    <ImageView
+                        android:id="@+id/emoji4"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji4" />
+
+                    <CheckBox
+                        android:id="@+id/emoji4checkBox"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:onClick="selectSticker"
+                        android:layout_gravity="center|center_horizontal" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/emoji5"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji5" />
+
+                    <CheckBox
+                        android:id="@+id/emoji5checkBox"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:onClick="selectSticker"
+                        android:layout_gravity="center|center_horizontal" />
+                    <ImageView
+                        android:id="@+id/emoji6"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji6" />
+
+                    <CheckBox
+                        android:id="@+id/emoji6checkBox"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:onClick="selectSticker"
+                        android:layout_gravity="center|center_horizontal" />
+                </TableRow>
+
+            </TableLayout>
 
         </LinearLayout>
     </ScrollView>
