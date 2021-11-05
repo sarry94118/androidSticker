@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 loginInfo.setText("Current user: " + curUsername);
-                logoutMsg.setText("");
+
 
                 //start after log in activity
                 Intent intent = new Intent(MainActivity.this, AfterLogInActivity.class);
