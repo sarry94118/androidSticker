@@ -75,6 +75,7 @@ public class AfterLogInActivity extends AppCompatActivity {
 
         textView4.setText("Username: " + username);
 
+
         // Forced to logout if a newer login occurs at another device
         mDatabase.child("users").child(username).child("token").addValueEventListener(new ValueEventListener() {
             @Override
@@ -167,11 +168,27 @@ public class AfterLogInActivity extends AppCompatActivity {
         });
     }
 
+    public void selectSticker(View view) {
+        final EditText receiverEditText = findViewById(R.id.editText2);
+        if (receiverEditText.equals("")) {
+            Toast.makeText(this, "Username can't be empty!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (view.getId() == R.id.emoji1checkBox) {
+            textView12.setText("emoji1checkBox");
+        } else if (view.getId() == R.id.emoji2checkBox) {
+            textView12.setText("emoji2checkBox");
+        } else if (view.getId() == R.id.emoji3checkBox) {
+            textView12.setText("emoji3checkBox");
+        }
+    }
+
     public void reset(View view) {
         textView12.setText("");
     }
 
     public void sendSticker(View view) {
+//        textView12.setText("test");
         final EditText receiverEditText = findViewById(R.id.editText2);
         final String receiver = receiverEditText.getText().toString().trim();
         final String candidate = textView12.getText().toString();

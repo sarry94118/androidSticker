@@ -131,6 +131,45 @@
                 android:background="?android:attr/listDivider"
                 android:padding="8dp" />
 
+            <ImageView
+                android:id="@+id/emoji1"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:textAlignment="center"
+                android:src="@drawable/emoji1" />
+
+            <CheckBox
+                android:id="@+id/emoji1checkBox"
+                android:onClick="selectSticker"
+                android:layout_width="33dp"
+                android:layout_height="35dp" />
+
+            <ImageView
+                android:id="@+id/emoji2"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:textAlignment="center"
+                android:src="@drawable/emoji2" />
+
+            <CheckBox
+                android:id="@+id/emoji2checkBox"
+                android:onClick="selectSticker"
+                android:layout_width="33dp"
+                android:layout_height="35dp" />
+
+            <ImageView
+                android:id="@+id/emoji3"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:textAlignment="center"
+                android:src="@drawable/emoji3" />
+
+            <CheckBox
+                android:id="@+id/emoji3checkBox"
+                android:onClick="selectSticker"
+                android:layout_width="33dp"
+                android:layout_height="35dp" />
+
         </LinearLayout>
     </ScrollView>
 
