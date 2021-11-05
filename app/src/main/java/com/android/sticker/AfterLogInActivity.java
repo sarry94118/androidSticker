@@ -51,7 +51,6 @@ public class AfterLogInActivity extends AppCompatActivity {
     private String deviceToken;
     private String targetToken;
     private Button button3;
-//    private ExpandableHeightGridView gridView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,12 +110,6 @@ public class AfterLogInActivity extends AppCompatActivity {
         mDatabase.child("stickers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Toast.makeText(AfterLogInActivity.this, "Stickers updated", Toast.LENGTH_SHORT).show();
-//                stickersArray.clear();
-//                for (DataSnapshot sticker : dataSnapshot.getChildren()) {
-//                    stickersArray.add(sticker.getKey());
-//                }
-//                gridView.setAdapter(new ArrayAdapter<>(AfterLoginActivity.this, R.layout.simple_list_item_1, stickersArray));
             }
 
             @Override
@@ -175,7 +168,6 @@ public class AfterLogInActivity extends AppCompatActivity {
     }
 
     public void sendSticker(View view) {
-//        textView12.setText("test");
         final EditText receiverEditText = findViewById(R.id.editText2);
         final String receiver = receiverEditText.getText().toString().trim();
         final String candidate = textView12.getText().toString();
