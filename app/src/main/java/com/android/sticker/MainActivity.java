@@ -104,8 +104,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        //set input view to empty
-        //userNameEditText.setText("");
 
         //update token and user name in database
         database.child("users").child(username).child("token").setValue(deviceToken);
