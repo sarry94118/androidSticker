@@ -49,7 +49,6 @@ public class AfterLogInActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private String username;
     private String deviceToken;
-    private ArrayList<String> stickersArray;
     private String targetToken;
     private Button button3;
 //    private ExpandableHeightGridView gridView;
@@ -68,8 +67,6 @@ public class AfterLogInActivity extends AppCompatActivity {
         textView4 = findViewById(R.id.textView4);
         textView11 = findViewById(R.id.textView11);
         textView12 = findViewById(R.id.textView12);
-        stickersArray = new ArrayList<>();
-//        gridView = (ExpandableHeightGridView) findViewById(R.id.grid_view);
         button3 = findViewById(R.id.button3);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -109,32 +106,16 @@ public class AfterLogInActivity extends AppCompatActivity {
             }
         });
 
-        stickersArray.add("Loading...");
-
-        // ExpandableHeightGridView.java to customise GridView is referenced from
-        // https://readyandroid.wordpress.com/how-to-use-full-height-listviewexpandableheightlistview-and-gridviewexpandableheightgridview-in-scrollview-android/
-        // https://gist.github.com/Kishanjvaghela/248b86b9e1c9fbcb8cd7
-//        gridView.setAdapter(new ArrayAdapter<>(AfterLoginActivity.this, R.layout.simple_list_item_1, stickersArray));
-//        gridView.setExpanded(true);
-        // Click to pick a sticker
-//        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                // Get the selected emoji
-//                String selectedSticker = stickersArray.get(position);
-//                textView12.setText(selectedSticker);
-//            }
-//        });
 
         // Download stickers from database
         mDatabase.child("stickers").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Toast.makeText(AfterLogInActivity.this, "Stickers updated", Toast.LENGTH_SHORT).show();
-                stickersArray.clear();
-                for (DataSnapshot sticker : dataSnapshot.getChildren()) {
-                    stickersArray.add(sticker.getKey());
-                }
+//                Toast.makeText(AfterLogInActivity.this, "Stickers updated", Toast.LENGTH_SHORT).show();
+//                stickersArray.clear();
+//                for (DataSnapshot sticker : dataSnapshot.getChildren()) {
+//                    stickersArray.add(sticker.getKey());
+//                }
 //                gridView.setAdapter(new ArrayAdapter<>(AfterLoginActivity.this, R.layout.simple_list_item_1, stickersArray));
             }
 
@@ -175,11 +156,17 @@ public class AfterLogInActivity extends AppCompatActivity {
             return;
         }
         if (view.getId() == R.id.emoji1checkBox) {
-            textView12.setText("emoji1checkBox");
+            textView12.setText("emoji1");
         } else if (view.getId() == R.id.emoji2checkBox) {
-            textView12.setText("emoji2checkBox");
+            textView12.setText("emoji2");
         } else if (view.getId() == R.id.emoji3checkBox) {
-            textView12.setText("emoji3checkBox");
+            textView12.setText("emoji3");
+        } else if (view.getId() == R.id.emoji4checkBox) {
+            textView12.setText("emoji4");
+        } else if (view.getId() == R.id.emoji5checkBox) {
+            textView12.setText("emoji5");
+        }else if (view.getId() == R.id.emoji6checkBox) {
+            textView12.setText("emoji6");
         }
     }
 
