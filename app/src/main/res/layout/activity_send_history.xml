@@ -50,7 +50,7 @@
                         android:src="@drawable/emoji1" />
 
                     <TextView
-                        android:id="@+id/sendNumber1"
+                        android:id="@+id/emoji1Count"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_row="0"
@@ -67,7 +67,7 @@
                         android:src="@drawable/emoji2" />
 
                     <TextView
-                        android:id="@+id/sendNumber2"
+                        android:id="@+id/emoji2Count"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_row="0"
@@ -92,7 +92,7 @@
                         android:src="@drawable/emoji3" />
 
                     <TextView
-                        android:id="@+id/sendNumber3"
+                        android:id="@+id/emoji3Count"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_row="0"
@@ -109,7 +109,7 @@
                         android:src="@drawable/emoji4" />
 
                     <TextView
-                        android:id="@+id/sendNumber4"
+                        android:id="@+id/emoji4Count"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_row="0"
@@ -133,7 +133,7 @@
                         android:src="@drawable/emoji5" />
 
                     <TextView
-                        android:id="@+id/sendNumber5"
+                        android:id="@+id/emoji5Count"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_row="0"
@@ -150,7 +150,7 @@
                         android:src="@drawable/emoji6" />
 
                     <TextView
-                        android:id="@+id/sendNumber6"
+                        android:id="@+id/emoji6Count"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:layout_row="0"
