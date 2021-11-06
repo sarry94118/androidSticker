@@ -286,6 +286,13 @@ public class AfterLogInActivity extends AppCompatActivity {
         }).start();
     }
 
+    public void sendHistory(View view) {
+        Intent intent = new Intent(this, SendHistoryActivity.class);
+        intent.putExtra("username", username);
+        intent.putExtra("deviceToken", deviceToken);
+        startActivity(intent);
+    }
+
     private String convertStreamToString(InputStream is) {
         Scanner s = new Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next().replace(",", ",\n") : "";
