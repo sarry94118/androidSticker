@@ -2,22 +2,14 @@ package com.android.sticker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import android.app.AlertDialog;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -65,8 +57,8 @@ public class AfterLogInActivity extends AppCompatActivity {
 
         textView4 = findViewById(R.id.textView4);
         textView11 = findViewById(R.id.textView11);
-        textView12 = findViewById(R.id.textView12);
-        button3 = findViewById(R.id.button3);
+        textView12 = findViewById(R.id.tv_selected_sticker);
+        button3 = findViewById(R.id.btn_send);
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         textView4.setText("Username: " + username);
@@ -143,7 +135,7 @@ public class AfterLogInActivity extends AppCompatActivity {
     }
 
     public void selectSticker(View view) {
-        final EditText receiverEditText = findViewById(R.id.editText2);
+        final EditText receiverEditText = findViewById(R.id.et_receiver_name);
         if (receiverEditText.equals("")) {
             Toast.makeText(this, "Username can't be empty!", Toast.LENGTH_SHORT).show();
             return;
@@ -168,7 +160,7 @@ public class AfterLogInActivity extends AppCompatActivity {
     }
 
     public void sendSticker(View view) {
-        final EditText receiverEditText = findViewById(R.id.editText2);
+        final EditText receiverEditText = findViewById(R.id.et_receiver_name);
         final String receiver = receiverEditText.getText().toString().trim();
         final String candidate = textView12.getText().toString();
 
@@ -317,6 +309,14 @@ public class AfterLogInActivity extends AppCompatActivity {
     // Go to the main activity after forced logged out
     protected void exit() {
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    // Direct to Received History activity
+    public void openReceiveHistoryActivity(View view) {
+        Intent intent = new Intent(this, HistoryReceivedActivity.class);
+        intent.putExtra("username", username);
+        intent.putExtra("deviceToken", deviceToken);
         startActivity(intent);
     }
 }
