@@ -287,7 +287,7 @@ public class AfterLogInActivity extends AppCompatActivity {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.ic_launcher_background)
                 .setContentTitle("Emoji Received!")
-                .setContentText(sender + " sent you the emoji sticker: " + sticker)
+                .setContentText(sender + " sent you the emoji sticker: " + sticker + ". Click to see details!")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true)
                 .setContentIntent(pIntent);
