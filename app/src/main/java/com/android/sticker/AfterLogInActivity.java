@@ -192,6 +192,7 @@ public class AfterLogInActivity extends AppCompatActivity {
                     }
 
                 }
+                Toast.makeText(AfterLogInActivity.this, "Sticker has been sent!", Toast.LENGTH_SHORT).show();
                 button3.setEnabled(true);
                 textView11.setText("Click one emoji to pick. Click \"Reset\" to cancel.");
             }
@@ -244,7 +245,7 @@ public class AfterLogInActivity extends AppCompatActivity {
                     h.post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(AfterLogInActivity.this, resp, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(AfterLogInActivity.this, resp, Toast.LENGTH_SHORT).show();
                         }
                     });
                 } catch (JSONException | IOException e) {
