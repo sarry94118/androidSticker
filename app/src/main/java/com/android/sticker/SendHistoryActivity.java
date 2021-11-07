@@ -72,7 +72,9 @@ public class SendHistoryActivity extends AppCompatActivity {
                         default:
                             break;
                     }
-                    textView.setText(countResult);
+                    if (textView != null) {
+                        textView.setText(countResult);
+                    }
                 }
             }
 
