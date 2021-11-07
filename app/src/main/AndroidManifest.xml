@@ -18,6 +18,8 @@
         <activity
             android:name=".SendHistoryActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden" />
+        <activity android:name=".ReceiveNotificationActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
         <activity
             android:name=".AfterLogInActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden" />
