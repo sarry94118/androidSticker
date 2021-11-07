@@ -80,7 +80,7 @@ public class AfterLogInActivity extends AppCompatActivity {
             }
         });
 
-        // Get special notifications during the time when the username is previously dissociated with a token and get associated again
+        // Get notification when new sticker received
         mDatabase.child("messages").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
