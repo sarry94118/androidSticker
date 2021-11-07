@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dp"
+    android:padding="8dp"
+    tools:context=".SendHistoryActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Times of each sticker sent by me"
+                android:textStyle="bold"
+                android:textAlignment="center" />
+
+            <TableLayout
+                android:id="@+id/tableLayout1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:stretchColumns="*">
+                <TableRow
+                    android:id="@+id/tableRow1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/emoji1"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji1" />
+
+                    <TextView
+                        android:id="@+id/emoji1Count"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="0"
+                        android:layout_gravity="center|center_horizontal" />
+                    <ImageView
+                        android:id="@+id/emoji2"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji2" />
+
+                    <TextView
+                        android:id="@+id/emoji2Count"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="0"
+                        android:layout_gravity="center|center_horizontal" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/emoji3"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="1"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji3" />
+
+                    <TextView
+                        android:id="@+id/emoji3Count"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="0"
+                        android:layout_gravity="center|center_horizontal" />
+                    <ImageView
+                        android:id="@+id/emoji4"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="1"
+                        android:layout_column="1"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji4" />
+
+                    <TextView
+                        android:id="@+id/emoji4Count"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="0"
+                        android:layout_gravity="center|center_horizontal" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/tableRow3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/emoji5"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji5" />
+
+                    <TextView
+                        android:id="@+id/emoji5Count"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="0"
+                        android:layout_gravity="center|center_horizontal" />
+                    <ImageView
+                        android:id="@+id/emoji6"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_row="0"
+                        android:layout_column="1"
+                        android:layout_gravity="center_horizontal"
+                        android:src="@drawable/emoji6" />
+
+                    <TextView
+                        android:id="@+id/emoji6Count"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_row="0"
+                        android:layout_column="0"
+                        android:text="0"
+                        android:layout_gravity="center|center_horizontal" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,9 @@
         <activity android:name=".AfterLogInActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
 
+        <activity android:name=".SendHistoryActivity"
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"/>
+
         <activity android:name=".MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true">
