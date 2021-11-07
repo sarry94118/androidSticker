@@ -63,41 +63,6 @@ public class AfterLogInActivity extends AppCompatActivity {
 
         textView4.setText("Username: " + username);
 
-
-        // Forced to logout if a newer login occurs at another device
-        mDatabase.child("users").child(username).child("token").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.getValue(String.class).equals(deviceToken)) {
-                    if (!(AfterLogInActivity.this).isFinishing()) {
-                        showDialog();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-        // Listen to update the number of sending stickers from database
-        mDatabase.child("messages").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                long count = 0;
-                for (DataSnapshot kv : dataSnapshot.getChildren()) {
-                    if (kv.child("sender").getValue(String.class).equals(username)) {
-                        count++;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-
         // Download stickers from database
         mDatabase.child("stickers").addValueEventListener(new ValueEventListener() {
             @Override
@@ -225,7 +190,6 @@ public class AfterLogInActivity extends AppCompatActivity {
         });
     }
 
-
     // Code referenced from Dr. Dan Feinberg's sample code this week
     public void fcmSend(final String sender, final String targetToken, final String sticker) {
         new Thread(new Runnable() {
@@ -278,6 +242,7 @@ public class AfterLogInActivity extends AppCompatActivity {
         }).start();
     }
 
+    // Direct to sent history activity
     public void sendHistory(View view) {
         Intent intent = new Intent(this, SendHistoryActivity.class);
         intent.putExtra("username", username);
@@ -288,28 +253,6 @@ public class AfterLogInActivity extends AppCompatActivity {
     private String convertStreamToString(InputStream is) {
         Scanner s = new Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next().replace(",", ",\n") : "";
-    }
-
-    // Forced to logout
-    public void showDialog() {
-        AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
-        myDialog.setTitle("Logout soon");
-        myDialog.setIcon(R.mipmap.ic_launcher_round);
-        myDialog.setMessage("You will be logged out since you are logging from other device.");
-        myDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                exit();
-            }
-        });
-        myDialog.create().show();
-    }
-
-    // Go to the main activity after forced logged out
-    protected void exit() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
     }
 
     // Direct to Received History activity
