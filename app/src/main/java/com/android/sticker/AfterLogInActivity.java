@@ -2,10 +2,16 @@ package com.android.sticker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import android.app.AlertDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -63,41 +69,6 @@ public class AfterLogInActivity extends AppCompatActivity {
 
         textView4.setText("Username: " + username);
 
-
-        // Forced to logout if a newer login occurs at another device
-        mDatabase.child("users").child(username).child("token").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.getValue(String.class).equals(deviceToken)) {
-                    if (!(AfterLogInActivity.this).isFinishing()) {
-                        showDialog();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-        // Listen to update the number of sending stickers from database
-        mDatabase.child("messages").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                long count = 0;
-                for (DataSnapshot kv : dataSnapshot.getChildren()) {
-                    if (kv.child("sender").getValue(String.class).equals(username)) {
-                        count++;
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-
-
         // Download stickers from database
         mDatabase.child("stickers").addValueEventListener(new ValueEventListener() {
             @Override
@@ -109,7 +80,7 @@ public class AfterLogInActivity extends AppCompatActivity {
             }
         });
 
-        // Get special notifications during the time when the username is previously dissociated with a token and get associated again
+        // Get notification when new sticker received
         mDatabase.child("messages").orderByKey().addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -118,7 +89,13 @@ public class AfterLogInActivity extends AppCompatActivity {
                     if (kv.child("offline").getValue(boolean.class) && kv.child("receiver").getValue(String.class).equals(username)) {
                         String sender = kv.child("sender").getValue(String.class);
                         String sticker = kv.child("sticker").getValue(String.class);
-//                        sendNotification(sender, sticker);
+
+                        // get emoji's (identified by the sticker id) binary from resource
+
+                        //resources.openRawResource(R.raw.filename)
+
+
+                        sendNotification(sender, sticker);
                         keyArray.add(kv.getKey());
                     }
                 }
@@ -225,7 +202,6 @@ public class AfterLogInActivity extends AppCompatActivity {
         });
     }
 
-
     // Code referenced from Dr. Dan Feinberg's sample code this week
     public void fcmSend(final String sender, final String targetToken, final String sticker) {
         new Thread(new Runnable() {
@@ -278,6 +254,7 @@ public class AfterLogInActivity extends AppCompatActivity {
         }).start();
     }
 
+    // Direct to sent history activity
     public void sendHistory(View view) {
         Intent intent = new Intent(this, SendHistoryActivity.class);
         intent.putExtra("username", username);
@@ -290,33 +267,48 @@ public class AfterLogInActivity extends AppCompatActivity {
         return s.hasNext() ? s.next().replace(",", ",\n") : "";
     }
 
-    // Forced to logout
-    public void showDialog() {
-        AlertDialog.Builder myDialog = new AlertDialog.Builder(this);
-        myDialog.setTitle("Logout soon");
-        myDialog.setIcon(R.mipmap.ic_launcher_round);
-        myDialog.setMessage("You will be logged out since you are logging from other device.");
-        myDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-                exit();
-            }
-        });
-        myDialog.create().show();
-    }
-
-    // Go to the main activity after forced logged out
-    protected void exit() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     // Direct to Received History activity
     public void openReceiveHistoryActivity(View view) {
         Intent intent = new Intent(this, HistoryReceivedActivity.class);
         intent.putExtra("username", username);
         intent.putExtra("deviceToken", deviceToken);
         startActivity(intent);
+    }
+
+    // code reference from Dr. Dan Feinberg's sample code this week
+    public void sendNotification(String sender, String sticker) {
+        String CHANNEL_ID = "Channel_Sticker";
+        Intent intent = new Intent(this, ReceiveNotificationActivity.class);
+        intent.putExtra("sender", sender);
+        intent.putExtra("sticker", sticker);
+        PendingIntent pIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_launcher_background)
+                .setContentTitle("Emoji Received!")
+                .setContentText(sender + " sent you the emoji sticker: " + sticker)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setAutoCancel(true)
+                .setContentIntent(pIntent);
+
+        createNotificationChannel();
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        notificationManager.notify((int) System.currentTimeMillis(), builder.build());
+    }
+
+    // code reference from Dr. Dan Feinberg's sample code this week
+    private void createNotificationChannel() {
+        String CHANNEL_ID = "Channel_Sticker";
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.app_name);
+            String description = getString(R.string.app_name);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 }
