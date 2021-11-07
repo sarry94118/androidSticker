@@ -89,6 +89,12 @@ public class AfterLogInActivity extends AppCompatActivity {
                     if (kv.child("offline").getValue(boolean.class) && kv.child("receiver").getValue(String.class).equals(username)) {
                         String sender = kv.child("sender").getValue(String.class);
                         String sticker = kv.child("sticker").getValue(String.class);
+
+                        // get emoji's (identified by the sticker id) binary from resource
+
+                        //resources.openRawResource(R.raw.filename)
+
+
                         sendNotification(sender, sticker);
                         keyArray.add(kv.getKey());
                     }
