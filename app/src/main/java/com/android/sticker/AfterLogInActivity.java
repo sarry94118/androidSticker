@@ -181,7 +181,7 @@ public class AfterLogInActivity extends AppCompatActivity {
                     }
                     Map time = new HashMap();
                     time.put("timestamp", ServerValue.TIMESTAMP);
-
+                    Toast.makeText(AfterLogInActivity.this, "Sticker has been sent!", Toast.LENGTH_SHORT).show();
                     // Upload to the database
                     if (!targetToken.equals("offline")) {
                         // Send notification via FCM if the receiver has a token
@@ -192,7 +192,6 @@ public class AfterLogInActivity extends AppCompatActivity {
                     }
 
                 }
-                Toast.makeText(AfterLogInActivity.this, "Sticker has been sent!", Toast.LENGTH_SHORT).show();
                 button3.setEnabled(true);
                 textView11.setText("Click one emoji to pick. Click \"Reset\" to cancel.");
             }
